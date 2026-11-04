@@ -268,6 +268,21 @@ koreacentral     <span class="c">← 그룹 위치는 메타데이터일 뿐, �
       <li>국외 접속 차단(WAF), HTTPS 강제·TLS 1.2 이상, DNSSEC, 봇 차단을 적용했습니다.</li>
       <li>컨테이너는 root가 아닌 사용자로, 읽기 전용으로, 커널 권한 없이 돌리고 메모리·프로세스 상한과 헬스체크를 걸었습니다. Trivy로 이미지를 점검해 취약점 22건을 0건으로 만들었습니다.</li>
     </ul>
+    <div class="shots"><figure class="shot wide"><pre class="term"><span class="c"># compose.yaml 보안 설정 (웹게임 컨테이너, 발췌)</span>
+ports: "127.0.0.1:8517:8517"      <span class="c">← 이 PC 안에서만 열림. 외부 공개는 터널로만</span>
+read_only: true                   <span class="c">← 파일 시스템 읽기 전용</span>
+cap_drop: [ALL]                   <span class="c">← 커널 권한 전부 제거</span>
+security_opt: [no-new-privileges:true]
+mem_limit: 512m   pids_limit: 128
+<span class="c"># Dockerfile</span>
+USER node                         <span class="c">← root가 아닌 사용자로 실행</span>
+HEALTHCHECK CMD wget -qO- http://127.0.0.1:8517/
+
+<span class="c"># 2026-10-20  첫 검사 22건 (설치 도구 npm 21건 + zlib 1건) → npm·npx·corepack·yarn 삭제, apk upgrade</span>
+<span class="c"># 2026-11-04  최신 취약점 DB로 다시 검사</span>
+<span class="p">$</span> trivy image --input splendor.tar --scanners vuln,secret
+splendor.tar (alpine 3.24.3)
+<span class="p">Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)</span></pre><figcaption>컨테이너 권한을 줄인 설정과 이미지 취약점 검사 결과: 22건 → 0건, 최신 취약점 DB로 다시 검사해도 0건</figcaption></figure></div>
     <div class="shots"><figure class="shot"><a href="ev/web-access.jpg" target="_blank" rel="noopener"><img src="ev/web-access.jpg" alt="허용되지 않은 사용자가 접속하면 보이는 인증 화면: Discord(OIDC)와 이메일 코드 두 가지 로그인" loading="lazy"></a><figcaption>허용되지 않은 사용자가 접속하면 보이는 인증 화면: Discord(OIDC)와 이메일 코드 두 가지 로그인</figcaption></figure></div>
     <h4>실시간 멀티플레이 웹게임 <span class="st b">운영 중</span></h4>
     <ul>
