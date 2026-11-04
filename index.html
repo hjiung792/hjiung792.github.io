@@ -84,6 +84,8 @@ details[open] .more{display:none}
 .shot:not(.wide) img{aspect-ratio:16/10;object-fit:cover;object-position:top}
 .shot figcaption{font-size:.8rem;color:var(--mute);margin-top:4px;line-height:1.45}
 a.maplink{display:inline-block;margin-left:6px;font-size:.8rem;font-weight:600;white-space:nowrap}
+pre.term{margin:0;padding:12px 14px;background:#0d1117;color:#d6deeb;border-radius:8px;overflow-x:auto;font:12.5px/1.6 "JetBrains Mono",ui-monospace,Consolas,"Malgun Gothic",monospace;white-space:pre}
+pre.term .c{color:#8b949e} pre.term .p{color:#7ee787} pre.term .e{color:#ff7b72}
 a.ref{font-size:.72rem;font-family:"JetBrains Mono",ui-monospace,Consolas,monospace;color:var(--primary);background:#eef0fb;padding:1px 6px;border-radius:4px;margin-left:4px;white-space:nowrap}
 
 /* 이력 */
@@ -119,6 +121,7 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
   h3,h4{break-after:avoid}
   .more,footer{display:none}
   .mini,.shot{break-inside:avoid}
+  pre.term{background:#f6f8fa;color:#111;white-space:pre-wrap}
   .photo{margin-bottom:0;box-shadow:none;border:1px solid #ccc}
   a{color:var(--body)}
   @page{size:A4;margin:16mm 14mm}
@@ -218,9 +221,23 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
     <p>지역과 클라우드에 따라 들어오는 공격이 어떻게 다른지 비교하려고, AWS와 Azure 여러 리전에 허니팟(공격을 받아 기록하는 미끼 서버)을 Terraform과 Ansible로 구축하고 있습니다.</p>
     <ul>
       <li>학교 계정 제약에 맞춰 설계를 바꿨습니다. 리소스 그룹을 새로 만들 수 없어 그룹 하나 안에서 리전을 나눴고, 유럽 리전 차단으로 다른 리전을 골랐습니다.</li>
-      <li>CPU 사용률을 측정한 근거로 센서를 스팟 인스턴스로 바꿔 비용을 줄였습니다.</li>
+      <li>AWS 센서 6대의 실제 사용량(CPU 1~4%, 메모리 4.4~5.2GB)을 측정해, 메모리 8GB는 유지하고 스팟 인스턴스로 바꿔 비용을 줄였습니다.</li>
       <li>리전·사양·예산을 정하고 확인 기준을 세우는 일을 맡았습니다. 코드는 AI 보조로 작성했습니다.</li>
     </ul>
+    <div class="shots"><figure class="shot wide"><pre class="term"><span class="c"># 2026-10-12  역할 부여 권한 시험 (없는 대상으로 1회 시도, 생성되는 것 없음)</span>
+<span class="p">$</span> az role assignment create --role Reader --scope .../resourceGroups/&lt;학교 RG&gt;
+<span class="e">ERROR: (AuthorizationFailed) ... does not have authorization to perform
+action 'Microsoft.Authorization/roleAssignments/write'</span>
+
+<span class="c"># 2026-10-16  그룹 하나로 여러 리전을 쓸 수 있는지 (읽기 전용 조회)</span>
+<span class="p">$</span> az group show -n &lt;학교 RG&gt; --query location
+koreacentral     <span class="c">← 그룹 위치는 메타데이터일 뿐, 자원 배치와 무관</span>
+<span class="p">$</span> az policy assignment list -g &lt;학교 RG&gt;
+(없음)           <span class="c">← 허용 리전 정책 없음 → 그룹 하나에서 리전별로 배치</span></pre><figcaption>팀 프로젝트 기록: 권한이 막힌 지점을 명령으로 확인하고, 그 안에서 가능한 구성을 찾은 근거 (계정·구독 정보는 가림)</figcaption></figure><figure class="shot wide"><pre class="term"><span class="c"># 2026-10-31  수집 10일차 중간 점검 (Hive 검색 엔진 조회 결과 요약)</span>
+센서 12대 + Hive 1대   13대 모두 최근 10분 안에 유입 확인
+  AWS    서울 2 · 싱가포르 2 · 시드니 2          센서당 24시간 31만~75만 건
+  Azure  한국 중부 2 · 동남아 2 · 호주 동부 2    센서당 24시간 157만~187만 건
+누적 (10.22 ~ 10.31)   약 1억 3,363만 건 · 73.3GB</pre><figcaption>팀 프로젝트 기록: 리전 6곳·센서 12대에서 들어온 공격 기록과 누적 수집량</figcaption></figure></div>
   </div>
 </details>
 
