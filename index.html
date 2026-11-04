@@ -166,7 +166,7 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
     <h4>데이터 <span class="st b">구현</span></h4>
     <ul>
       <li>운영 DB 이전: 운영 DB에 실제 가입 계정이 있는 것을 먼저 확인하고, 기존 DB를 남긴 채 임시 DB에 복원·검사한 뒤 이름만 바꿔 끼웠습니다. 전송 전후 SHA-256, 외래 키, 시퀀스를 대조했습니다. <a class="ref" href="https://github.com/travel-hunter/travel-hunter-onprem/pull/54" target="_blank" rel="noopener">PR #54</a></li>
-      <li>PostGIS를 도입하고 지도 데이터 적재를 앱과 분리된 작업으로 만들었습니다. <a class="ref" href="https://github.com/travel-hunter/travel-hunter-onprem/pull/92" target="_blank" rel="noopener">PR #92</a></li>
+      <li>PostGIS를 도입하고, 국토교통부 건물·필지 데이터(로컬 전국 적재 기준 건물 1,434만 건, 필지 1,940만 건)를 앱과 분리된 적재 작업으로 넣었습니다. 적재가 실패하면 새로 만든 표를 지워 기존 데이터에 영향이 없게 했습니다. <a class="ref" href="https://github.com/travel-hunter/travel-hunter-onprem/pull/92" target="_blank" rel="noopener">PR #92</a></li>
       <li>차가운 DB에서 장소 첫 검색이 최악 7.6초 걸리던 것을, 앱 시작 때 표와 색인을 미리 읽어 두게 해 2.4초로 줄였습니다(로컬 측정). <a class="ref" href="https://github.com/travel-hunter/travel-hunter-onprem/pull/92" target="_blank" rel="noopener">PR #92</a></li>
     </ul>
 
