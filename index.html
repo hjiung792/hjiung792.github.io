@@ -74,6 +74,9 @@ details[open] .more{display:none}
 .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:12px 0 4px}
 .shot{margin:0}
 .shot.wide{grid-column:1/-1}
+.shot.wide>a{display:block;padding:8px;background:#fff;border:1px solid var(--hairline);border-radius:10px}
+.shot.wide img{border:0;border-radius:6px}
+.shots.two{grid-template-columns:1fr 1fr}
 .shot img{display:block;width:100%;border:1px solid var(--hairline);border-radius:6px;background:#fff}
 .shot:not(.wide) img{aspect-ratio:16/10;object-fit:cover;object-position:top}
 .shot figcaption{font-size:.8rem;color:var(--mute);margin-top:4px;line-height:1.45}
@@ -98,6 +101,7 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
   summary,.detail{padding-left:16px;padding-right:16px}
   td:first-child{white-space:normal}
   .table-wrap{overflow-x:auto}
+  .shots.two{grid-template-columns:1fr}
 }
 
 /* 인쇄: 밝은 바탕, 카드 모두 펼침 (beforeprint 스크립트) */
@@ -181,7 +185,7 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
     <ul>
       <li>정책 수집과 자동 공개 게이트, 사진 저장·캐시, 일정 편집 개선 등을 PR 단위로 개발했습니다. <a class="ref" href="https://github.com/travel-hunter/travel-hunter-onprem/pull/87" target="_blank" rel="noopener">PR #87</a></li>
     </ul>
-    <div class="shots">
+    <div class="shots two">
       <figure class="shot"><a href="ev/th-prs.jpg" target="_blank" rel="noopener"><img src="ev/th-prs.jpg" alt="본인이 올려 머지된 PR 58건: 작업 귀속의 근거 (공개 레포)" loading="lazy"></a><figcaption>본인이 올려 머지된 PR 58건: 작업 귀속의 근거 (공개 레포)</figcaption></figure>
       <figure class="shot"><a href="ev/th-service.jpg" target="_blank" rel="noopener"><img src="ev/th-service.jpg" alt="서비스 화면 (개발 서버 로그인 화면)" loading="lazy"></a><figcaption>서비스 화면 (개발 서버 로그인 화면)</figcaption></figure>
     </div>
