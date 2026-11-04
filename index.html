@@ -73,7 +73,7 @@ details[open] .more{display:none}
 /* 증적 (관련 내용 바로 아래) */
 .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:12px 0 4px}
 .shot{margin:0}
-.shot.wide{grid-column:1/-1;width:min(1070px,calc(100vw - 32px));margin-left:50%;transform:translateX(-50%)}
+.shot.wide{grid-column:1/-1}
 .shot img{display:block;width:100%;border:1px solid var(--hairline);border-radius:6px;background:#fff}
 .shot:not(.wide) img{aspect-ratio:16/10;object-fit:cover;object-position:top}
 .shot figcaption{font-size:.8rem;color:var(--mute);margin-top:4px;line-height:1.45}
@@ -112,7 +112,6 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
   h3,h4{break-after:avoid}
   .more,footer{display:none}
   .mini,.shot{break-inside:avoid}
-  .shot.wide{width:auto;margin-left:0;transform:none}
   .photo{margin-bottom:0;box-shadow:none;border:1px solid #ccc}
   a{color:var(--body)}
   @page{size:A4;margin:16mm 14mm}
