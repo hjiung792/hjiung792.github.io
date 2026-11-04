@@ -69,6 +69,12 @@ details[open] .more{display:none}
 .mini h3{font-size:.98rem;margin-bottom:4px}
 .mini p{margin:0;font-size:.92rem}
 
+/* 증적 */
+.ev{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:8px}
+.ev figure{margin:0}
+.ev img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border:1px solid var(--hairline);border-radius:6px;background:#fff}
+.ev figcaption{font-size:.8rem;color:var(--mute);margin-top:4px;line-height:1.4}
+
 /* 이력 */
 table{width:100%;border-collapse:collapse;font-size:.95rem}
 th,td{text-align:left;padding:8px 12px 8px 0;border-bottom:1px solid var(--hairline);vertical-align:top}
@@ -99,7 +105,7 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
   summary,li,tr{break-inside:avoid}
   h3,h4{break-after:avoid}
   .more,footer{display:none}
-  .mini{break-inside:avoid}
+  .mini,.ev figure{break-inside:avoid}
   a{color:var(--body)}
   @page{size:A4;margin:16mm 14mm}
 }
@@ -166,6 +172,10 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
     <ul>
       <li>정책 수집과 자동 공개 게이트, 사진 저장·캐시, 일정 편집 개선 등을 PR 단위로 개발했습니다.</li>
     </ul>
+
+    <h4>증적</h4>
+    <div class="ev"><figure><a href="ev/th-dev-server.jpg" target="_blank" rel="noopener"><img src="ev/th-dev-server.jpg" alt="개발 서버 구성도 (Archify로 직접 작성)" loading="lazy"></a><figcaption>개발 서버 구성도 (Archify로 직접 작성)</figcaption></figure><figure><a href="ev/th-aws-plan.jpg" target="_blank" rel="noopener"><img src="ev/th-aws-plan.jpg" alt="AWS 2단계 이전 설계도 (설계)" loading="lazy"></a><figcaption>AWS 2단계 이전 설계도 (설계)</figcaption></figure><figure><a href="ev/th-prs.jpg" target="_blank" rel="noopener"><img src="ev/th-prs.jpg" alt="본인이 올려 머지된 PR 58건" loading="lazy"></a><figcaption>본인이 올려 머지된 PR 58건</figcaption></figure><figure><a href="ev/th-service.jpg" target="_blank" rel="noopener"><img src="ev/th-service.jpg" alt="서비스 화면 (개발 서버)" loading="lazy"></a><figcaption>서비스 화면 (개발 서버)</figcaption></figure></div>
+    <p class="note">PR 목록은 공개 레포에서 직접 확인할 수 있습니다: <a href="https://github.com/travel-hunter/travel-hunter-onprem/pulls?q=is%3Apr+author%3Ahjiung792+is%3Amerged" target="_blank" rel="noopener">본인 PR 보기</a></p>
   </div>
 </details>
 
@@ -220,6 +230,8 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
     <ul>
       <li>로그인 없이 한 판 10분, 선택에 따라 결과가 나오고 공유 카드로 남는 모바일 웹게임입니다. 정적 빌드로 Cloudflare Pages에 올릴 준비를 하고 있습니다.</li>
     </ul>
+    <h4>증적</h4>
+    <div class="ev"><figure><a href="ev/web-access.jpg" target="_blank" rel="noopener"><img src="ev/web-access.jpg" alt="허용되지 않은 사용자에게 보이는 인증 화면 (Discord OIDC, 이메일 코드)" loading="lazy"></a><figcaption>허용되지 않은 사용자에게 보이는 인증 화면 (Discord OIDC, 이메일 코드)</figcaption></figure></div>
     <p class="note">지인 전용 서비스라 허용한 사용자만 접속할 수 있습니다. 링크를 열면 로그인 화면에서 멈추는 것이 정상입니다.</p>
   </div>
 </details>
