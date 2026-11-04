@@ -8,16 +8,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
-  --canvas:#0b0b0d; --surface:#141518; --surface-2:#1b1c20; --hairline:#2a2c33;
-  --ink:#f2f3f5; --body:#d0d6e0; --mute:#9aa0aa; --primary:#8b95ff;
-  --built:#4cc38a; --practice:#6cb6ff; --personal:#c39bff;
+  --canvas:#ffffff; --surface:#f7f8fa; --surface-2:#eceef2; --hairline:#e1e4e9;
+  --ink:#111318; --body:#2b2f36; --mute:#5f6670; --primary:#3f4bd1;
+  --built:#13804f; --practice:#1d5fa8; --personal:#6b3fb5;
+  --hero:#0b0b0d; --hero-ink:#f2f3f5; --hero-body:#d0d6e0; --hero-link:#8b95ff;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--canvas);color:var(--body);
   font-family:"Pretendard Variable",Pretendard,system-ui,sans-serif;
   font-size:16px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
-main{max-width:880px;margin:0 auto;padding:56px 16px 80px}
+.wrap,main{max-width:880px;margin:0 auto;padding-left:16px;padding-right:16px}
+main{padding-top:8px;padding-bottom:80px}
 h1,h2,h3{color:var(--ink);line-height:1.3;margin:0}
 h1{font-size:2rem;letter-spacing:-.02em}
 h2{font-size:1.25rem;margin:56px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--hairline)}
@@ -26,16 +28,20 @@ a{color:var(--primary);text-decoration:none}
 a:hover{text-decoration:underline}
 code,.tag{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Consolas,monospace}
 
-/* 프로필 */
+/* 상단 프로필 (검은 띠) */
+.hero{background:var(--hero);color:var(--hero-body)}
+.hero .wrap{padding-top:48px;padding-bottom:40px}
+.hero h1,.hero .lead{color:var(--hero-ink)}
+.hero a{color:var(--hero-link)}
 .profile{display:flex;gap:24px;align-items:center}
-.photo{width:112px;height:144px;object-fit:cover;border-radius:8px;border:1px solid var(--hairline);flex:none}
+.photo{width:112px;height:150px;object-fit:cover;border-radius:8px;border:1px solid #2a2c33;flex:none}
 .lead{margin:8px 0 12px;color:var(--ink);font-size:1.05rem}
 .links{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0;padding:0;list-style:none;font-size:.95rem}
 
 /* 프로젝트 카드 */
 .cards{display:grid;gap:16px}
 details.card{background:var(--surface);border:1px solid var(--hairline);border-radius:8px}
-details.card[open]{border-color:#3a3d47}
+details.card[open]{border-color:#c9cdd5;background:#fff}
 summary{list-style:none;cursor:pointer;padding:20px 24px;display:block}
 summary::-webkit-details-marker{display:none}
 summary:focus-visible{outline:2px solid var(--primary);outline-offset:2px;border-radius:8px}
@@ -64,7 +70,7 @@ ul.plain{margin:0;padding-left:20px}
 footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
 
 @media (max-width:600px){
-  main{padding-top:32px}
+  .hero .wrap{padding-top:32px;padding-bottom:28px}
   h1{font-size:1.6rem}
   .profile{flex-direction:column;align-items:flex-start}
   summary,.detail{padding-left:16px;padding-right:16px}
@@ -74,10 +80,11 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
 
 /* 인쇄: 밝은 바탕, 카드 모두 펼침 (beforeprint 스크립트) */
 @media print{
-  :root{--canvas:#fff;--surface:#fff;--surface-2:#f1f2f4;--hairline:#d5d8de;--ink:#111;--body:#222;--mute:#555;--primary:#2a37c9;
-    --built:#13804f;--practice:#1d5fa8;--personal:#6b3fb5}
+  :root{--surface:#fff;--hero:#fff;--hero-ink:#111;--hero-body:#222;--hero-link:#222}
+  .hero .wrap,.wrap,main{padding-left:0;padding-right:0}
+  .hero .wrap{padding-top:0;padding-bottom:8px}
   body{font-size:10.5pt;line-height:1.55}
-  main{max-width:none;padding:0}
+  main{max-width:none}
   h2{margin-top:28px;break-after:avoid}
   summary,li,tr{break-inside:avoid}
   h3,h4{break-after:avoid}
@@ -88,9 +95,7 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
 </style>
 </head>
 <body>
-<main>
-
-<header class="profile">
+<header class="hero"><div class="wrap profile">
   <!-- 사진: 지원 기간에만 단독 커밋으로 추가 → <img class="photo" src="photo.jpg" alt="한지웅 사진"> -->
   <div>
     <h1>한지웅</h1>
@@ -100,7 +105,9 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
       <li><a href="https://github.com/hjiung792">github.com/hjiung792</a></li>
     </ul>
   </div>
-</header>
+</div></header>
+
+<main>
 
 <h2>프로젝트</h2>
 <div class="cards">
