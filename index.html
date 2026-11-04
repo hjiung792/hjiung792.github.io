@@ -77,6 +77,9 @@ details[open] .more{display:none}
 .shot.wide>a{display:block;padding:8px;background:#fff;border:1px solid var(--hairline);border-radius:10px}
 .shot.wide img{border:0;border-radius:6px}
 .shots.two{grid-template-columns:1fr 1fr}
+.shots.phones{grid-template-columns:repeat(3,minmax(0,250px));justify-content:center;gap:16px}
+.shots.phones .shot img{aspect-ratio:auto;object-fit:contain}
+.shot.crop img{aspect-ratio:16/8;object-fit:cover;object-position:top}
 .shot img{display:block;width:100%;border:1px solid var(--hairline);border-radius:6px;background:#fff}
 .shot:not(.wide) img{aspect-ratio:16/10;object-fit:cover;object-position:top}
 .shot figcaption{font-size:.8rem;color:var(--mute);margin-top:4px;line-height:1.45}
@@ -185,9 +188,11 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
     <ul>
       <li>정책 수집과 자동 공개 게이트, 사진 저장·캐시, 일정 편집 개선 등을 PR 단위로 개발했습니다. <a class="ref" href="https://github.com/travel-hunter/travel-hunter-onprem/pull/87" target="_blank" rel="noopener">PR #87</a></li>
     </ul>
-    <div class="shots two">
-      <figure class="shot"><a href="ev/th-prs.jpg" target="_blank" rel="noopener"><img src="ev/th-prs.jpg" alt="본인이 올려 머지된 PR 58건: 작업 귀속의 근거 (공개 레포)" loading="lazy"></a><figcaption>본인이 올려 머지된 PR 58건: 작업 귀속의 근거 (공개 레포)</figcaption></figure>
-      <figure class="shot"><a href="ev/th-service.jpg" target="_blank" rel="noopener"><img src="ev/th-service.jpg" alt="서비스 화면 (개발 서버 로그인 화면)" loading="lazy"></a><figcaption>서비스 화면 (개발 서버 로그인 화면)</figcaption></figure>
+    <div class="shots"><figure class="shot wide crop"><a href="ev/th-prs.jpg" target="_blank" rel="noopener"><img src="ev/th-prs.jpg" alt="본인이 올려 머지된 PR 58건: 작업 귀속의 근거 (공개 레포)" loading="lazy"></a><figcaption>본인이 올려 머지된 PR 58건: 작업 귀속의 근거 (공개 레포)</figcaption></figure></div>
+    <div class="shots phones">
+      <figure class="shot"><a href="ev/th-home.jpg" target="_blank" rel="noopener"><img src="ev/th-home.jpg" alt="운영 중인 서비스 홈: 수집된 혜택 104건과 이번 주 마감 33건이 노출됨" loading="lazy"></a><figcaption>운영 중인 서비스 홈: 수집된 혜택 104건과 이번 주 마감 33건이 노출됨</figcaption></figure>
+      <figure class="shot"><a href="ev/th-policy-map.jpg" target="_blank" rel="noopener"><img src="ev/th-policy-map.jpg" alt="정책 지도: 내가 맡은 정책 수집과 PostGIS 지도 데이터가 쓰이는 화면" loading="lazy"></a><figcaption>정책 지도: 내가 맡은 정책 수집과 PostGIS 지도 데이터가 쓰이는 화면</figcaption></figure>
+      <figure class="shot"><a href="ev/th-place.jpg" target="_blank" rel="noopener"><img src="ev/th-place.jpg" alt="장소 상세: 반경 2km 안의 장소를 가까운 순으로 보여 주는 PostGIS 거리 검색이 쓰이는 화면" loading="lazy"></a><figcaption>장소 상세: 반경 2km 안의 장소를 가까운 순으로 보여 주는 PostGIS 거리 검색이 쓰이는 화면</figcaption></figure>
     </div>
     <p class="note">레포가 공개라 각 줄의 PR 링크로 실제 변경을 확인할 수 있습니다. <a href="https://github.com/travel-hunter/travel-hunter-onprem/pulls?q=is%3Apr+author%3Ahjiung792+is%3Amerged" target="_blank" rel="noopener">본인 PR 전체 보기</a></p>
   </div>
