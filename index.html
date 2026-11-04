@@ -226,16 +226,25 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
 
 <details class="card">
   <summary>
-    <div class="meta"><span class="kind personal">개인</span><span class="tag">로컬 LLM</span><span class="tag">WSL</span><span class="tag">작업 스케줄러</span></div>
-    <h3>로컬 AI 자동화</h3>
-    <p class="sub">집 PC에서 로컬 LLM으로 도는 자동화 작업을 스케줄로 운영하고 있습니다.</p>
+    <div class="meta"><span class="kind personal">개인</span><span class="st b">운영 중</span><span class="tag">Docker</span><span class="tag">Ollama</span><span class="tag">작업 스케줄러</span><span class="tag">Discord</span></div>
+    <h3>개인 자동화 에이전트 운영</h3>
+    <p class="sub">집 PC에서 브리핑, 게임 서버 관리, 재고 알림 등 에이전트 여러 개를 운영합니다. 에이전트마다 폴더 하나로 나누고, Docker 컨테이너형과 작업 스케줄러형 두 가지 운영 방식을 표준으로 정해 관리합니다.</p>
     <span class="more">자세히 보기 ▾</span>
   </summary>
   <div class="detail">
+    <h4>운영 표준</h4>
     <ul>
-      <li>뉴스를 모아 로컬 LLM으로 요약하는 브리핑 에이전트를 약 4개월째 운영하고 있습니다.</li>
-      <li>상품 재고를 확인해 알려 주는 알림 봇을 운영하고 있습니다.</li>
-      <li>WSL과 Windows 작업 스케줄러로 실행 시간을 관리합니다.</li>
+      <li>에이전트 하나는 폴더 하나입니다. 템플릿으로 새 에이전트를 만들고, 상태 확인 스크립트로 전체 상태를 한 표로 봅니다.</li>
+      <li>컨테이너형은 Compose 프로젝트 이름을 고정해 폴더 이름이 바뀌어도 컨테이너와 네트워크가 떨어져 나가지 않게 했고, 코드와 데이터를 나누고 큰 데이터는 볼륨에 둡니다.</li>
+      <li>스케줄러형은 상주 루프, 자동 재시작, 로그 회전을 갖춥니다. 로그가 261MB까지 쌓인 일을 겪은 뒤 오래된 회전본을 지우는 상한을 넣었습니다.</li>
+      <li>비밀값 파일은 git에서 빼고 파일 권한을 본인만으로 제한합니다.</li>
+    </ul>
+    <h4>운영 중인 에이전트</h4>
+    <ul>
+      <li><b>아침 브리핑</b>: 매일 08:00 구독 소스를 모아 로컬 LLM(Ollama, Qwen2.5 14B)으로 요약하고 노트와 Discord로 보냅니다. 8월부터 81회 실행했습니다.</li>
+      <li><b>게임 서버 관리 봇</b>: Discord에서 게임을 추가하면 Docker 이미지로 서버를 구축하고, 버튼으로 켜고 끄며, 허용된 콘솔 명령만 전달합니다. 포트 자동 할당과 볼륨 백업을 넣었습니다.</li>
+      <li><b>재고 알림 봇</b>: 여러 쇼핑몰의 재고를 상시 확인해 품절에서 구매 가능으로 바뀌는 순간 텔레그램과 Discord로 알립니다. 일부 사이트는 실제 브라우저(Playwright)로 확인합니다.</li>
+      <li><b>학습 보조 봇</b>: 옵시디언 노트의 인박스를 정리하고 Discord에서 질문에 답합니다.</li>
     </ul>
   </div>
 </details>
@@ -275,7 +284,7 @@ footer{margin-top:64px;font-size:.8rem;color:var(--mute)}
   <tr><td>CI</td><td>Jenkinsfile 보강, 파이프라인 보안 진단</td><td><span class="src p">프로젝트</span></td></tr>
   <tr><td>리눅스·네트워크</td><td>Ubuntu Server, mdadm RAID, 2·3계층 네트워크, Snort</td><td><span class="src l">실습</span></td></tr>
   <tr><td>개발</td><td>Python(FastAPI), TypeScript(React, Node.js)</td><td><span class="src p">프로젝트</span> <span class="src i">개인</span></td></tr>
-  <tr><td>자동화·AI</td><td>로컬 LLM, WSL·작업 스케줄러, Claude Code</td><td><span class="src i">개인</span></td></tr>
+  <tr><td>자동화·AI</td><td>로컬 LLM(Ollama), Docker Compose 에이전트, Windows 작업 스케줄러, Discord 봇, Playwright, Claude Code</td><td><span class="src i">개인</span></td></tr>
 </table></div>
 
 <h2>병역</h2>
