@@ -78,6 +78,8 @@ details[open] .more{display:none}
 .shot.wide>a{display:block;padding:8px;background:#fff;border:1px solid var(--hairline);border-radius:10px}
 .shot.wide img{border:0;border-radius:6px}
 .shots.two{grid-template-columns:1fr 1fr}
+.shots.one{grid-template-columns:minmax(0,440px)}
+.shots.one .shot img{aspect-ratio:auto;object-fit:contain}
 .shots.phones{grid-template-columns:repeat(3,minmax(0,250px));justify-content:center;gap:16px}
 .shots.phones .shot img{aspect-ratio:auto;object-fit:contain}
 .shot.crop img{aspect-ratio:16/8;object-fit:cover;object-position:top}
@@ -285,7 +287,7 @@ HEALTHCHECK CMD wget -qO- http://127.0.0.1:8517/
 <span class="p">$</span> trivy image --input splendor.tar --scanners vuln,secret
 splendor.tar (alpine 3.24.3)
 <span class="p">Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)</span></pre><figcaption>컨테이너 권한을 줄인 설정과 이미지 취약점 검사 결과: 22건 → 0건, 최신 취약점 DB로 다시 검사해도 0건</figcaption></figure></div>
-    <div class="shots"><figure class="shot"><a href="ev/web-access.jpg" target="_blank" rel="noopener"><img src="ev/web-access.jpg" alt="허용되지 않은 사용자가 접속하면 보이는 인증 화면: Discord(OIDC)와 이메일 코드 두 가지 로그인" loading="lazy"></a><figcaption>허용되지 않은 사용자가 접속하면 보이는 인증 화면: Discord(OIDC)와 이메일 코드 두 가지 로그인</figcaption></figure></div>
+    <div class="shots one"><figure class="shot"><a href="ev/web-access-login.jpg" target="_blank" rel="noopener"><img src="ev/web-access-login.jpg" alt="허용되지 않은 사용자가 접속하면 보이는 인증 화면: Discord(OIDC)와 이메일 코드 두 가지 로그인" loading="lazy"></a><figcaption>허용되지 않은 사용자가 접속하면 보이는 인증 화면: Discord(OIDC)와 이메일 코드 두 가지 로그인</figcaption></figure></div>
     <h4>실시간 멀티플레이 웹게임 <span class="st b">운영 중</span></h4>
     <ul>
       <li>2~4명이 각자 브라우저로 접속하는 카드 전략 게임입니다. 웹소켓 서버(Node·TypeScript)에서 방 만들기, 관전, 재접속을 처리하고, 플레이어마다 볼 수 있는 정보만 보냅니다.</li>
